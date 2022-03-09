@@ -32,22 +32,22 @@ public class MinecraftServerMixin {
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void readIronStarsState(
-            ChunkProgressListener chunkProgressListener,
-            CallbackInfo ci,
-            ServerLevelData serverLevelData,
-            WorldGenSettings worldGenSettings,
-            boolean flag,
-            long i,
-            long j,
-            List<CustomSpawner> list,
-            MappedRegistry<LevelStem> mappedRegistry,
-            LevelStem levelStem,
-            ChunkGenerator chunkGenerator,
-            DimensionType dimensionType,
-            ServerLevel serverLevel,
+            ChunkProgressListener chunkProgressListener,    // 从这里开始
+            CallbackInfo ci,                                //     |
+            ServerLevelData serverLevelData,                //     |
+            WorldGenSettings worldGenSettings,              //     |
+            boolean flag,                                   //     |
+            long i,                                         //     |
+            long j,                                         //     |
+            List<CustomSpawner> list,                       //     |
+            MappedRegistry<LevelStem> mappedRegistry,       //     |
+            LevelStem levelStem,                            //     |
+            ChunkGenerator chunkGenerator,                  //    \|/
+            DimensionType dimensionType,                    //     v
+            ServerLevel serverLevel,                        // 一直到这里 啥用没有, 还不能删, 难受
             DimensionDataStorage dimensionDataStorage
     ) {
-        dimensionDataStorage.computeIfAbsent(EFFNetwork.getState()::loadData, EFFNetwork.getState()::loadData, "networks");
+        dimensionDataStorage.computeIfAbsent(EFFNetwork.STATE::load, EFFNetwork.STATE::create, "networks");
     }
 
 }

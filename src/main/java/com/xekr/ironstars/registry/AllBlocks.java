@@ -12,7 +12,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import static net.minecraft.world.level.block.Blocks.TRIPWIRE_HOOK;
 
-
 public class AllBlocks {
 
     private static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, IronStars.ID);
@@ -55,6 +54,13 @@ public class AllBlocks {
     public static final Block MOON_ROCK = register("moon_rock", new Block(defaultProperties().sound(SoundType.STONE)));
     public static final Block MOON_SOIL = register("moon_soil", new Block(defaultProperties(Material.CLAY).sound(SoundType.ROOTS)));
     public static final Block TITANIUM_ORE = register("titanium_ore", new Block(defaultProperties(Material.STONE).sound(SoundType.STONE)));
+
+    // <!-- TEST:START -->
+
+    public static final Block TEST = register("test", new com.xekr.ironstars.test.TestBlock(defaultProperties()));
+    public static final Block TEST1 = register("test1", new com.xekr.ironstars.test.TestBlock1(defaultProperties()));
+
+    // <!-- TEST:END -->
 
     private static Properties defaultProperties() {
         return defaultProperties(Material.METAL);

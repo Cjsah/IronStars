@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("ConstantConditions")
 public class AllBlockEntities {
@@ -18,6 +17,12 @@ public class AllBlockEntities {
     public static final BlockEntityType<CopperPressurePlateBlockEntity> COPPER_PRESSURE_PLATE = register("copper_pressure_plate", CopperPressurePlateBlockEntity::new, AllBlocks.COPPER_PRESSURE_PLATE);
     public static final BlockEntityType<TitaniumPressurePlateBlockEntity> TITANIUM_PRESSURE_PLATE = register("titanium_pressure_plate", TitaniumPressurePlateBlockEntity::new, AllBlocks.TITANIUM_PRESSURE_PLATE);
 
+    // <!-- TEST:START -->
+
+    public static final BlockEntityType<com.xekr.ironstars.test.TestBlockEntity> TEST = register("test", com.xekr.ironstars.test.TestBlockEntity::new, AllBlocks.TEST);
+    public static final BlockEntityType<com.xekr.ironstars.test.TestBlockEntity1> TEST1 = register("test1", com.xekr.ironstars.test.TestBlockEntity1::new, AllBlocks.TEST1);
+
+    // <!-- TEST:END -->
 
     private static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType.BlockEntitySupplier<T> pFactory, Block... pValidBlocks) {
         BlockEntityType<T> blockEntityType = BlockEntityType.Builder.of(pFactory, pValidBlocks).build(null);

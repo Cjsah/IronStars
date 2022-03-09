@@ -1,14 +1,16 @@
 package com.xekr.ironstars.registry;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.xekr.ironstars.command.TestCommand;
+import com.xekr.ironstars.efficiency.EFFNetwork;
 import com.xekr.ironstars.world.MoonWorldGenerator;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,7 +22,9 @@ public final class AllEvents {
         @SubscribeEvent
         public static void onCommandRegister(RegisterCommandsEvent event) {
             CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
-            TestCommand.register(dispatcher);
+            // <!-- TEST:START -->
+            com.xekr.ironstars.test.TestCommand.register(dispatcher);
+            // <!-- TEST:END -->
         }
     }
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)

@@ -13,24 +13,20 @@ import java.util.UUID;
 public class NetworkState {
     private final List<Runnable> dirtyListeners = Lists.newArrayList();
 
-    private void addDirtyListener(Runnable pRunnable) {
-        this.dirtyListeners.add(pRunnable);
-    }
-
     public void markDirty() {
         for(Runnable runnable : this.dirtyListeners) {
             runnable.run();
         }
     }
 
-    public NetworkStateSavedData loadData() {
+    public NetworkStateSavedData create() {
         NetworkStateSavedData state = new NetworkStateSavedData();
-        this.addDirtyListener(state::setDirty);
+        this.dirtyListeners.add(state::setDirty);
         return state;
     }
 
-    public NetworkStateSavedData loadData(CompoundTag nbt) {
-        return this.loadData().load(nbt);
+    public NetworkStateSavedData load(CompoundTag nbt) {
+        return this.create().load(nbt);
     }
 
     public static class NetworkStateSavedData extends SavedData{

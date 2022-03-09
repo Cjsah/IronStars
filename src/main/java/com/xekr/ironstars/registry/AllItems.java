@@ -78,6 +78,13 @@ public class AllItems {
     //ship
     //alien
 
+    // <!-- TEST:START -->
+
+    public static final RegistryObject<Item> TEST = REGISTRY.register("test", () -> new BlockItem(AllBlocks.TEST, getProperties()));
+    public static final RegistryObject<Item> TEST1 = REGISTRY.register("test1", () -> new BlockItem(AllBlocks.TEST1, getProperties()));
+
+    // <!-- TEST:END -->
+
     private static Item.Properties getProperties() {
         return getProperties(BASE);
     }
